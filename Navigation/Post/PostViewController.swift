@@ -13,7 +13,8 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .systemGreen
-        self.title = postTitle.title
+//        self.title = postTitle.title
+        self.title = "Black Cat"
         
         let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.done, target: self, action: #selector(postTapped))
         

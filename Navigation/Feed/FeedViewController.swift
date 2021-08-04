@@ -69,4 +69,4 @@ extension FeedViewController {
     }
 }
 
-let postTitle = Post(title: "Black Cat")
+//let postTitle = Post(title: "Black Cat")

@@ -19,6 +19,7 @@
 		112A123926A76A48005F46A6 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A123826A76A48005F46A6 /* InfoViewController.swift */; };
 		112A124626AD9750005F46A6 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112A124526AD9750005F46A6 /* ProfileHeaderView.swift */; };
 		113AE87F26B5E3B60037E715 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113AE87E26B5E3B60037E715 /* LogInViewController.swift */; };
+		114B65A226BB2F0D004E8F8C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114B65A126BB2F0D004E8F8C /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		112A123826A76A48005F46A6 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		112A124526AD9750005F46A6 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		113AE87E26B5E3B60037E715 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		114B65A126BB2F0D004E8F8C /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				112A123426A75B36005F46A6 /* PostViewController.swift */,
 				112A123626A7666C005F46A6 /* Post.swift */,
+				114B65A126BB2F0D004E8F8C /* PostTableViewCell.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				114B65A226BB2F0D004E8F8C /* PostTableViewCell.swift in Sources */,
 				112A123526A75B36005F46A6 /* PostViewController.swift in Sources */,
 				112A120F26A6156D005F46A6 /* ViewController.swift in Sources */,
 				112A120B26A6156D005F46A6 /* AppDelegate.swift in Sources */,
