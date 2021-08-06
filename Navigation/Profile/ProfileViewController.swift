@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let tableView = UITableView(frame: .zero, style: .plain)
+    let tableView = UITableView(frame: .zero, style: .grouped)
     
     let cellID = String(describing: PostTableViewCell.self)
     let headerID = String(describing: ProfileHeaderView.self)
