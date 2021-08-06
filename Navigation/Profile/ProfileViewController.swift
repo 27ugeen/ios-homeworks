@@ -7,63 +7,12 @@
 
 import UIKit
 
-//class ProfileViewController: UIViewController {
-//
-//    let profileHeaderView: ProfileHeaderView = {
-//        let profile = ProfileHeaderView()
-//        profile.translatesAutoresizingMaskIntoConstraints = false
-//        return profile
-//    }()
-//
-//    let setTitleButton: UIButton = {
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = .lightGray
-//        button.setTitle("Set title", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.setTitleColor(.red, for: .selected)
-//        button.setTitleColor(.purple, for: .highlighted)
-//        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-//        return button
-//    }()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        setupViews()
-//    }
-//
-//    @objc func buttonPressed() {
-//       print("Set title button pressed...")
-//    }
-//}
-
-//extension ProfileViewController {
-//    private func setupViews(){
-//
-//        view.backgroundColor = .lightGray
-//        view.addSubview(profileHeaderView)
-//        view.addSubview(setTitleButton)
-//
-//        let constraints = [
-//            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-//
-//            setTitleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            setTitleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            setTitleButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//            setTitleButton.heightAnchor.constraint(equalToConstant: 50)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
-//}
-
-
 class ProfileViewController: UIViewController {
     
-    let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    let cellID = "cellID"
+    let tableView = UITableView(frame: .zero, style: .grouped)
+    
+    let cellID = String(describing: PostTableViewCell.self)
+    let headerID = String(describing: ProfileHeaderView.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,11 +26,12 @@ extension ProfileViewController {
     func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: headerID)
         
         tableView.dataSource = self
-        
+        tableView.delegate = self
     }
 }
 
@@ -98,25 +48,33 @@ extension ProfileViewController {
 }
 
 extension ProfileViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return PostsStorage.tableModel.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return PostsStorage.tableModel[section].posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = "\(indexPath.section) \(indexPath.row)"
-//        cell.accessoryType = .checkmark
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PostTableViewCell
+        cell.post = PostsStorage.tableModel[indexPath.section].posts[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Title \(section)"
+        return PostsStorage.tableModel[section].title
     }
     
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as! ProfileHeaderView
+        return headerView
+    }
 }

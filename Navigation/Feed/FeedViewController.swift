@@ -68,5 +68,3 @@ extension FeedViewController {
         NSLayoutConstraint.activate(constraints)
     }
 }
-
-//let postTitle = Post(title: "Black Cat")

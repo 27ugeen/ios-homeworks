@@ -7,26 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
-    
-    let profileHeaderView: ProfileHeaderView = {
-        let profile = ProfileHeaderView()
-        profile.translatesAutoresizingMaskIntoConstraints = false
-        profile.backgroundColor = .lightGray
-        return profile
-    }()
-    
-    let setTitleButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .lightGray
-        button.setTitle("Set title", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.red, for: .selected)
-        button.setTitleColor(.purple, for: .highlighted)
-        button.addTarget(self, action: #selector(setTitleButtonPressed), for: .touchUpInside)
-        return button
-    }()
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let avatarImage: UIImageView = {
         let image = UIImageView()
@@ -74,7 +55,7 @@ class ProfileHeaderView: UIView {
     let setStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemBlue.withAlphaComponent(0.7)
         button.layer.cornerRadius = 14
         button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -86,9 +67,9 @@ class ProfileHeaderView: UIView {
         button.addTarget(self, action: #selector(setStatusButtonPressed), for: .touchUpInside)
         return button
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
     }
     
@@ -104,58 +85,39 @@ class ProfileHeaderView: UIView {
             (statusLabel.text = statusTextField.text)
         statusTextField.text = ""
     }
-    
-    @objc
-    func setTitleButtonPressed() {
-        print("Set title button pressed...")
-    }
 }
 
 extension ProfileHeaderView {
     private func setupViews(){
-        
-        
-        addSubview(profileHeaderView)
-        addSubview(setTitleButton)
-        
-        profileHeaderView.addSubview(avatarImage)
-        profileHeaderView.addSubview(fullNameLabel)
-        profileHeaderView.addSubview(statusLabel)
-        profileHeaderView.addSubview(statusTextField)
-        profileHeaderView.addSubview(setStatusButton)
+
+        contentView.addSubview(avatarImage)
+        contentView.addSubview(fullNameLabel)
+        contentView.addSubview(statusLabel)
+        contentView.addSubview(statusTextField)
+        contentView.addSubview(setStatusButton)
         
         let constraints = [
-            profileHeaderView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            
-            setTitleButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            setTitleButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            setTitleButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            setTitleButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            avatarImage.topAnchor.constraint(equalTo: profileHeaderView.topAnchor, constant: 16),
-            avatarImage.leadingAnchor.constraint(equalTo: profileHeaderView.leadingAnchor, constant: 16),
+            avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            avatarImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 110),
             avatarImage.heightAnchor.constraint(equalToConstant: 110),
             
-            fullNameLabel.topAnchor.constraint(equalTo: profileHeaderView.topAnchor, constant: 16),
+            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             
             setStatusButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 46),
-            setStatusButton.leadingAnchor.constraint(equalTo: profileHeaderView.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: profileHeaderView.trailingAnchor, constant: -16),
+            setStatusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             
             statusTextField.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
-            statusTextField.trailingAnchor.constraint(equalTo: profileHeaderView.trailingAnchor, constant: -16),
+            statusTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             statusTextField.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             
             statusLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             statusLabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -8)
-            
         ]
         NSLayoutConstraint.activate(constraints)
     }
