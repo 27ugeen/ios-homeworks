@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let loginNavVC = UINavigationController(rootViewController: loginVC)
         loginNavVC.isNavigationBarHidden = true
+        
         loginNavVC.tabBarItem = UITabBarItem(title: loginVC.title, image: UIImage(systemName: "person.fill"), tag: 1)
         
         tabBarController.viewControllers = [feedNavVC, loginNavVC]

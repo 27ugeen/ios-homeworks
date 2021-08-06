@@ -109,6 +109,7 @@ class LogInViewController: UIViewController {
     func buttonPressed() {
         print("Login button pressed...")
         let vc = ProfileViewController()
+        UIApplication.shared.isStatusBarHidden = false
         navigationController?.pushViewController(vc, animated: true)
     }
 }
