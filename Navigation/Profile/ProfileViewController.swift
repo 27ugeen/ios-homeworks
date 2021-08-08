@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
+        
         setupTableView()
         setupConstraints()
     }
@@ -76,14 +78,5 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) as! ProfileHeaderView
         return headerView
-    }
-}
-
-extension ProfileViewController {
-    override var prefersStatusBarHidden: Bool {
-      return false
-    }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 }

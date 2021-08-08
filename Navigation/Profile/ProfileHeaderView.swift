@@ -67,7 +67,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         button.addTarget(self, action: #selector(setStatusButtonPressed), for: .touchUpInside)
         return button
     }()
-
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -90,29 +90,29 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 extension ProfileHeaderView {
     private func setupViews(){
 
-        contentView.addSubview(avatarImage)
-        contentView.addSubview(fullNameLabel)
-        contentView.addSubview(statusLabel)
-        contentView.addSubview(statusTextField)
-        contentView.addSubview(setStatusButton)
+        addSubview(avatarImage)
+        addSubview(fullNameLabel)
+        addSubview(statusLabel)
+        addSubview(statusTextField)
+        addSubview(setStatusButton)
         
         let constraints = [
-            avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            avatarImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            avatarImage.topAnchor.constraint(equalTo:  topAnchor, constant: 16),
+            avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 110),
             avatarImage.heightAnchor.constraint(equalToConstant: 110),
             
-            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            fullNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             
             setStatusButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 46),
-            setStatusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            setStatusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             
             statusTextField.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
-            statusTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusTextField.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             
