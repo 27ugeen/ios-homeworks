@@ -37,11 +37,11 @@ class PhotosTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         
-        view.register(galeryShortCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: galeryShortCollectionViewCell.self))
+        view.register(PhotosShortCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: PhotosShortCollectionViewCell.self))
         
         view.dataSource = self
         view.delegate = self
-        
+
         return view
     }()
     
@@ -77,7 +77,6 @@ extension PhotosTableViewCell {
             photosPreview.heightAnchor.constraint(equalToConstant: photoWidth),
             
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
     
@@ -94,7 +93,7 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = photosPreview.dequeueReusableCell(withReuseIdentifier: String(describing: galeryShortCollectionViewCell.self), for: indexPath) as! galeryShortCollectionViewCell
+        let cell = photosPreview.dequeueReusableCell(withReuseIdentifier: String(describing: PhotosShortCollectionViewCell.self), for: indexPath) as! PhotosShortCollectionViewCell
         cell.photo = PhotosStorage.tableModel[indexPath.section].photos[indexPath.item]
         return cell
     }
@@ -108,47 +107,5 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
-    }
-    
-}
-//==========================================================
-class galeryShortCollectionViewCell: UICollectionViewCell {
-    
-    var photo: Photo? {
-        didSet {
-            area.image = photo?.image
-        }
-    }
-    
-    let area: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .black
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        return image
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupViews() {
-        contentView.addSubview(area)
-        
-        let constraints = [
-            area.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            area.topAnchor.constraint(equalTo: contentView.topAnchor),
-            area.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            area.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
     }
 }
