@@ -17,10 +17,10 @@ class PhotosViewController: UIViewController {
         collection.backgroundColor = .white
         
         collection.translatesAutoresizingMaskIntoConstraints = false
-//        collection.contentInset = .init(top: 8, left: 8, bottom: 8, right: 8)
+        //        collection.contentInset = .init(top: 8, left: 8, bottom: 8, right: 8)
         
         collection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
-
+        
         collection.dataSource = self
         collection.delegate = self
         
@@ -39,7 +39,7 @@ class PhotosViewController: UIViewController {
         let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: UIBarButtonItem.Style.done, target: self, action: nil)
         self.navigationItem.setRightBarButtonItems([button], animated: true)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -49,7 +49,7 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController {
     func setupViews() {
         view.backgroundColor = .white
-
+        
         view.addSubview(collectionView)
         
         let constraints = [

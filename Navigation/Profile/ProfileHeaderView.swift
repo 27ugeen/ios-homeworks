@@ -89,7 +89,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 
 extension ProfileHeaderView {
     private func setupViews(){
-
+        
         addSubview(avatarImage)
         addSubview(fullNameLabel)
         addSubview(statusLabel)

@@ -18,7 +18,7 @@ class PostTableViewCell: UITableViewCell {
             postViewsLabel.text = "Views: \(String(describing: post?.views))"
         }
     }
-
+    
     var postTitleLabel: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class PostTableViewCell: UITableViewCell {
         return image
     }()
     
-     var postDescriptionLabel: UILabel = {
+    var postDescriptionLabel: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
         description.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -44,7 +44,7 @@ class PostTableViewCell: UITableViewCell {
         description.numberOfLines = 0
         return description
     }()
-
+    
     var postlikesLabel: UILabel = {
         let likes = UILabel()
         likes.translatesAutoresizingMaskIntoConstraints = false

@@ -41,7 +41,7 @@ class PhotosTableViewCell: UITableViewCell {
         
         view.dataSource = self
         view.delegate = self
-
+        
         return view
     }()
     
