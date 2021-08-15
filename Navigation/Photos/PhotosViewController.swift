@@ -30,6 +30,8 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        
+        self.title = "Photo Gallery"
     }
     
     override func viewWillAppear(_ animated: Bool) {
