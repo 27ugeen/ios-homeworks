@@ -14,8 +14,8 @@ class PostTableViewCell: UITableViewCell {
             postTitleLabel.text = post?.title
             postImageView.image = post?.image
             postDescriptionLabel.text = post?.description
-            postlikesLabel.text = "Likes: \(String(describing: post?.likes))"
-            postViewsLabel.text = "Views: \(String(describing: post?.views))"
+            postlikesLabel.text = "Likes: \(String(describing: (post?.likes ?? 0)))"
+            postViewsLabel.text = "Views: \(String(describing: (post?.views ?? 0)))"
         }
     }
     

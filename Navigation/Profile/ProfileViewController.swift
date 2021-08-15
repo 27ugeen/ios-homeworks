@@ -58,7 +58,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostsStorage.tableModel[section].posts.count
+        return PostsStorage.tableModel[section].posts.count + 1
     }
     
     
