@@ -22,7 +22,7 @@ class LogInViewController: UIViewController {
     }()
     
     let logoImage: UIImageView = {
-       let image = UIImageView()
+        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.image = UIImage(named: "logo")
         image.backgroundColor = .white
@@ -72,7 +72,7 @@ class LogInViewController: UIViewController {
         
         let backgroundImage = UIImage(named: "blue_pixel")
         let trasparentImage = backgroundImage!.alpha(0.8)
-
+        
         button.setBackgroundImage(backgroundImage, for: .normal)
         button.setBackgroundImage(trasparentImage, for: .selected)
         button.setBackgroundImage(trasparentImage, for: .highlighted)
@@ -84,10 +84,10 @@ class LogInViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
     }
     
@@ -116,7 +116,7 @@ class LogInViewController: UIViewController {
 extension LogInViewController {
     func setupViews() {
         view.backgroundColor = .white
-
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -124,7 +124,7 @@ extension LogInViewController {
         contentView.addSubview(loginTextField)
         contentView.addSubview(passwordTextField)
         contentView.addSubview(loginButton)
-
+        
         let constraints = [
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -147,7 +147,7 @@ extension LogInViewController {
             loginTextField.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120),
             loginTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginTextField.heightAnchor.constraint(equalToConstant: 50),
-
+            
             passwordTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
