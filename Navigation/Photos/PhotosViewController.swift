@@ -17,7 +17,6 @@ class PhotosViewController: UIViewController {
         collection.backgroundColor = .white
         
         collection.translatesAutoresizingMaskIntoConstraints = false
-        //        collection.contentInset = .init(top: 8, left: 8, bottom: 8, right: 8)
         
         collection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
         
@@ -91,10 +90,18 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(indexPath.section) \(indexPath.row)")
+        print("Photo Gallery: item: \(indexPath.item)")
     }
 }

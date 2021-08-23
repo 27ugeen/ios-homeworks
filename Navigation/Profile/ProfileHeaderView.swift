@@ -47,6 +47,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         text.layer.cornerRadius = 12
         text.layer.borderWidth = 1
         text.layer.borderColor = UIColor.black.cgColor
+        text.placeholder = "Write something..."
         text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: text.frame.height))
         text.leftViewMode = .always
         return text

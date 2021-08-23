@@ -18,8 +18,9 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .green
+        image.backgroundColor = .white
         image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 6
         image.clipsToBounds = true
         return image
     }()
@@ -44,8 +45,6 @@ extension PhotosCollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
-    
 }
