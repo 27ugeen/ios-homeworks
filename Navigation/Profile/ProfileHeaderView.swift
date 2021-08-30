@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let avatarImage: UIImageView = {
         let image = UIImageView()
@@ -47,6 +47,7 @@ class ProfileHeaderView: UIView {
         text.layer.cornerRadius = 12
         text.layer.borderWidth = 1
         text.layer.borderColor = UIColor.black.cgColor
+        text.placeholder = "Write something..."
         text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: text.frame.height))
         text.leftViewMode = .always
         return text
@@ -55,7 +56,7 @@ class ProfileHeaderView: UIView {
     let setStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemBlue.withAlphaComponent(0.7)
         button.layer.cornerRadius = 14
         button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -64,12 +65,12 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowColor = UIColor.black.cgColor
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setStatusButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
     }
     
@@ -78,7 +79,7 @@ class ProfileHeaderView: UIView {
     }
     
     @objc
-    private func buttonPressed() {
+    private func setStatusButtonPressed() {
         print("Set status button pressed...")
         (statusTextField.text == "" || statusTextField.text == nil) ?
             (statusLabel.text = "Write something!") :
@@ -89,6 +90,7 @@ class ProfileHeaderView: UIView {
 
 extension ProfileHeaderView {
     private func setupViews(){
+        
         addSubview(avatarImage)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
@@ -96,7 +98,7 @@ extension ProfileHeaderView {
         addSubview(setStatusButton)
         
         let constraints = [
-            avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            avatarImage.topAnchor.constraint(equalTo:  topAnchor, constant: 16),
             avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 110),
             avatarImage.heightAnchor.constraint(equalToConstant: 110),
@@ -108,6 +110,7 @@ extension ProfileHeaderView {
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             
             statusTextField.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
@@ -116,7 +119,6 @@ extension ProfileHeaderView {
             
             statusLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             statusLabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -8)
-            
         ]
         NSLayoutConstraint.activate(constraints)
     }
